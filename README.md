@@ -71,3 +71,59 @@ Hệ thống cho phép người dùng tìm kiếm địa điểm thông qua từ
 │ Location & User │
 │      Data       │
 └─────────────────┘
+## UML
+
+Hệ thống được phân tích và thiết kế bằng UML nhằm mô tả các tác nhân, chức năng, luồng xử lý và cấu trúc của hệ thống.
+
+### Use Case Diagram
+
+Mô tả các tác nhân và chức năng chính của hệ thống.
+
+**Actors:**
+- Người dùng
+- Quản trị viên
+- AI API
+
+**Các chức năng chính:**
+- Đăng ký / Đăng nhập
+- Quản lý hồ sơ cá nhân
+- Quản lý sở thích
+- Xem bản đồ văn hóa
+- Tìm kiếm địa điểm
+- Lọc địa điểm
+- Xem chi tiết địa điểm
+- Tìm kiếm bằng ngôn ngữ tự nhiên
+- Xem gợi ý cá nhân hóa
+- Quản lý địa điểm
+- Quản lý danh mục
+
+### Activity Diagram
+
+Mô tả luồng xử lý của các chức năng chính:
+- Tìm kiếm địa điểm
+- Tìm kiếm bằng ngôn ngữ tự nhiên
+- Gợi ý địa điểm cá nhân hóa
+- Quản lý dữ liệu địa điểm
+
+### Sequence Diagram
+
+Mô tả trình tự tương tác giữa người dùng, Frontend, Backend, AI API và cơ sở dữ liệu.
+
+Luồng tìm kiếm bằng ngôn ngữ tự nhiên:
+
+```text
+Người dùng
+    ↓
+Frontend (React)
+    ↓
+Backend (FastAPI)
+    ↓
+AI API
+    ↓
+Backend (FastAPI)
+    ↓
+MySQL
+    ↓
+Frontend
+    ↓
+Kết quả tìm kiếm
