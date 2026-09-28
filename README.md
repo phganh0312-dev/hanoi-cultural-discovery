@@ -46,31 +46,6 @@ Hệ thống cho phép người dùng tìm kiếm địa điểm thông qua từ
 - VS Code
 - Postman
 
-## Kiến trúc hệ thống
-
-```text
-┌─────────────────┐
-│    Frontend     │
-│ React + Leaflet │
-└────────┬────────┘
-         │ REST API
-         ▼
-┌─────────────────┐
-│     Backend     │
-│ Python/FastAPI  │
-└──────┬─────┬────┘
-       │     │
-       │     ▼
-       │  ┌──────────────┐
-       │  │  OpenAI API  │
-       │  └──────────────┘
-       │
-       ▼
-┌─────────────────┐
-│      MySQL      │
-│ Location & User │
-│      Data       │
-└─────────────────┘
 ## Phân tích hệ thống
 
 ### 1. Phân chia các tầng
