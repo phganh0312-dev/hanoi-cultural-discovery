@@ -71,59 +71,57 @@ Hệ thống cho phép người dùng tìm kiếm địa điểm thông qua từ
 │ Location & User │
 │      Data       │
 └─────────────────┘
-## UML
+## Phân tích hệ thống
 
-Hệ thống được phân tích và thiết kế bằng UML nhằm mô tả các tác nhân, chức năng, luồng xử lý và cấu trúc của hệ thống.
+### 1. Phân chia các tầng
 
-### Use Case Diagram
+Hệ thống được thiết kế theo mô hình phân tầng, gồm:
 
-Mô tả các tác nhân và chức năng chính của hệ thống.
+- **Presentation Layer:** React.js, Tailwind CSS và Leaflet. Phụ trách giao diện, bản đồ và tương tác với người dùng.
+- **Business Logic Layer:** Python + FastAPI. Xử lý các nghiệp vụ, xác thực, tìm kiếm, lọc và gợi ý địa điểm.
+- **Data Access Layer:** Thực hiện truy xuất và quản lý dữ liệu trong MySQL.
+- **AI Service Layer:** Kết nối OpenAI API để phân tích yêu cầu tìm kiếm bằng ngôn ngữ tự nhiên và chuyển đổi thành các tiêu chí/tag phù hợp.
 
-**Actors:**
-- Người dùng
-- Quản trị viên
-- AI API
+### 2. Các thực thể chính
 
-**Các chức năng chính:**
-- Đăng ký / Đăng nhập
-- Quản lý hồ sơ cá nhân
-- Quản lý sở thích
-- Xem bản đồ văn hóa
-- Tìm kiếm địa điểm
-- Lọc địa điểm
-- Xem chi tiết địa điểm
-- Tìm kiếm bằng ngôn ngữ tự nhiên
-- Xem gợi ý cá nhân hóa
-- Quản lý địa điểm
-- Quản lý danh mục
+- **User:** thông tin tài khoản và hồ sơ người dùng.
+- **Interest:** sở thích của người dùng.
+- **Location:** thông tin các địa điểm văn hóa.
+- **Category:** phân loại địa điểm.
+- **Tag:** các thuộc tính mô tả địa điểm.
+- **Recommendation:** thông tin phục vụ việc gợi ý địa điểm.
 
-### Activity Diagram
+### 3. Dữ liệu
 
-Mô tả luồng xử lý của các chức năng chính:
-- Tìm kiếm địa điểm
-- Tìm kiếm bằng ngôn ngữ tự nhiên
-- Gợi ý địa điểm cá nhân hóa
-- Quản lý dữ liệu địa điểm
+Hệ thống quản lý các nhóm dữ liệu chính:
 
-### Sequence Diagram
+- Thông tin tài khoản và người dùng.
+- Sở thích người dùng.
+- Thông tin địa điểm văn hóa.
+- Danh mục và tag.
+- Vị trí địa lý của địa điểm.
+- Hình ảnh và nội dung mô tả địa điểm.
 
-Mô tả trình tự tương tác giữa người dùng, Frontend, Backend, AI API và cơ sở dữ liệu.
+Dữ liệu địa điểm được thu thập và chuẩn hóa từ các địa điểm thực tế tại Hà Nội trước khi lưu trữ trong MySQL.
 
-Luồng tìm kiếm bằng ngôn ngữ tự nhiên:
+### 4. Các hành động chính
 
-```text
-Người dùng
-    ↓
-Frontend (React)
-    ↓
-Backend (FastAPI)
-    ↓
-AI API
-    ↓
-Backend (FastAPI)
-    ↓
-MySQL
-    ↓
-Frontend
-    ↓
-Kết quả tìm kiếm
+- Đăng ký, đăng nhập và quản lý tài khoản.
+- Quản lý thông tin và sở thích cá nhân.
+- Xem bản đồ các không gian văn hóa.
+- Tìm kiếm và lọc địa điểm.
+- Tìm kiếm bằng ngôn ngữ tự nhiên thông qua AI.
+- Xem thông tin chi tiết địa điểm.
+- Nhận gợi ý địa điểm phù hợp với sở thích.
+- Quản lý dữ liệu địa điểm và danh mục.
+
+### 5. Giao diện chính
+
+- **Đăng nhập / Đăng ký**
+- **Trang khám phá:** bản đồ, tìm kiếm và bộ lọc.
+- **Trang kết quả tìm kiếm:** danh sách địa điểm và bản đồ.
+- **Trang chi tiết địa điểm:** hình ảnh, mô tả, thông tin và vị trí.
+- **Trang gợi ý cá nhân:** các địa điểm phù hợp với sở thích.
+- **Trang hồ sơ:** thông tin tài khoản và sở thích.
+- **Trang quản trị:** quản lý địa điểm và danh mục.
+
